@@ -79,8 +79,8 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <button onclick="switchView('home')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">首頁</button>
-                            <button onclick="switchView('archive')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">機密題庫 (80題)</button>
-                            <button onclick="startSimulation()" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-sky-500 transition shadow-lg shadow-sky-900/50">開始模擬 (隨機10題)</button>
+                            <button onclick="switchView('archive')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">機密題庫 (100題)</button>
+                            <button onclick="startSimulation()" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-sky-500 transition shadow-lg shadow-sky-900/50">開始模擬 (隨機20題)</button>
                         </div>
                     </div>
                 </div>
@@ -98,14 +98,14 @@
         <div id="view-home" class="animate-fade-in flex flex-col items-center justify-center min-h-[80vh] text-center">
             <div class="mb-8 relative inline-block">
                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-25 animate-pulse"></div>
-                <span class="relative px-4 py-1 bg-slate-800 rounded-full text-xs font-mono text-cyan-300 border border-cyan-500/30">VER 3.0 // TECH_ANALYSIS_BOOTCAMP</span>
+                <span class="relative px-4 py-1 bg-slate-800 rounded-full text-xs font-mono text-cyan-300 border border-cyan-500/30">VER 4.0 // TECH_ANALYSIS_BOOTCAMP</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
                 實戰操盤<span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">特訓戰情室</span>
             </h1>
             <p class="text-xl text-slate-400 max-w-2xl mb-12 font-light">
                 「勝負不放在心上，只注重在正確的位置，做正確的事。」<br>
-                80道淬鍊題庫，打造鋼鐵般的紀律與眼光。
+                100道淬鍊題庫，打造鋼鐵般的紀律與眼光。
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
@@ -114,7 +114,7 @@
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.624 5.832 20 7.5 20s3.332-.376 3.332-1.747M12 6.253c1.168-.776 2.754-1.253 4.5-1.253s3.332.477 3.332 1.253v13C19.832 19.624 18.168 20 16.5 20s-3.332-.376-3.332-1.747"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">閱覽機密題庫</h3>
-                    <p class="text-slate-400">完整存取 80 道核心技術分析試題，包含K線、均線、型態、量價與心法。</p>
+                    <p class="text-slate-400">完整存取 100 道核心技術分析試題，包含波浪、K線、均線、型態、量價與心法。</p>
                 </div>
 
                 <div onclick="startSimulation()" class="group cursor-pointer bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-emerald-500 rounded-2xl p-8 transition-all duration-300 neon-border relative overflow-hidden">
@@ -125,17 +125,17 @@
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">啟動實戰模擬</h3>
-                    <p class="text-slate-400">系統將隨機抽取 10 題進行測驗。測試你的即時反應與判斷力。</p>
+                    <p class="text-slate-400">系統將隨機抽取 20 題進行測驗。測試你的即時反應與判斷力。</p>
                 </div>
             </div>
         </div>
 
-        <!-- View: Archive (80 Questions) -->
+        <!-- View: Archive (100 Questions) -->
         <div id="view-archive" class="hidden">
             <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
                 <div>
                     <h2 class="text-3xl font-bold text-white">機密檔案庫</h2>
-                    <p class="text-slate-400 font-mono mt-1">TOTAL_RECORDS: 80 // ACCESS_LEVEL: UNRESTRICTED</p>
+                    <p class="text-slate-400 font-mono mt-1">TOTAL_RECORDS: 100 // ACCESS_LEVEL: UNRESTRICTED</p>
                 </div>
                 <div class="flex space-x-2">
                     <span class="px-3 py-1 rounded bg-blue-900/30 text-blue-400 text-xs border border-blue-800">基礎內功</span>
@@ -154,11 +154,11 @@
             <!-- Progress Bar -->
             <div class="mb-8">
                 <div class="flex justify-between text-xs font-mono text-slate-400 mb-2">
-                    <span id="quiz-progress-text">QUESTION 01/10</span>
+                    <span id="quiz-progress-text">QUESTION 01/20</span>
                     <span id="quiz-score-text">SCORE: 0</span>
                 </div>
                 <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                    <div id="quiz-progress-bar" class="h-full bg-sky-500 transition-all duration-500" style="width: 10%"></div>
+                    <div id="quiz-progress-bar" class="h-full bg-sky-500 transition-all duration-500" style="width: 5%"></div>
                 </div>
             </div>
 
@@ -225,7 +225,7 @@
 
     <!-- Data & Logic -->
     <script>
-        // 80 Questions Data (Expanded)
+        // 100 Questions Data
         const questionsDB = [
             // Phase 1: Basic (Original 1-10)
             { id: 1, category: "基礎內功", q: "多頭趨勢（牛市）最核心的定義「底底高、頭頭高」是指什麼？", options: ["股價站上所有均線", "低點比前低高，高點突破前高", "成交量持續放大", "KD黃金交叉"], ans: 1, expl: "正確。多頭趨勢的定義就是每一個回檔的低點比前一個低點高（底底高），且每一個上漲的高點突破前一個高點（頭頭高）。" },
@@ -263,8 +263,7 @@
             { id: 29, category: "實戰心法", q: "為什麼不要去猜測股價的頭部或底部（摸頭猜底）？", options: ["因為猜不到", "逆勢操作風險大，應等訊號確認", "主力會生氣", "軟體不支援"], ans: 1, expl: "頭部底部是市場走出來的，順勢交易者應等待趨勢反轉確認。" },
             { id: 30, category: "實戰心法", q: "技術分析的終極目的不是預測未來，而是什麼？", options: ["解釋過去", "炫耀技術", "擬定對策", "預測股價"], ans: 2, expl: "針對各種可能走勢（漲/跌/盤）事先擬定對應的操作劇本，才是技術分析的核心。" },
 
-            // NEW QUESTIONS (31-80)
-            // K-line Patterns & Technicals
+            // Questions 31-80 (Previous Batch)
             { id: 31, category: "基礎內功", q: "K線組合「晨星」(Morning Star) 出現在底部，通常代表？", options: ["趨勢持續下跌", "多頭反轉訊號", "盤整訊號", "成交量萎縮"], ans: 1, expl: "晨星由長黑、跳空小十字、長紅組成，是標準的底部反轉訊號。" },
             { id: 32, category: "基礎內功", q: "「夜星」(Evening Star) 出現在高檔，其型態特徵為？", options: ["長紅→跳空小紅/黑→長黑", "長黑→跳空小紅→長紅", "紅三兵", "黑三兵"], ans: 0, expl: "夜星是高檔反轉訊號，中間的星線代表多方力竭，隨後被長黑吞噬。" },
             { id: 33, category: "基礎內功", q: "「多頭吞噬」型態發生時，右邊紅K實體必須？", options: ["完全包覆左邊黑K實體", "比左邊黑K短", "與左邊黑K一樣長", "不重要"], ans: 0, expl: "右邊長紅將左邊黑K完全包覆，代表多方力道強烈反擊，扭轉局勢。" },
@@ -275,8 +274,6 @@
             { id: 38, category: "基礎內功", q: "關於「紅三兵」型態的敘述，何者正確？", options: ["連續三根黑K", "底部連續三根紅K，高點創新高", "高檔連續三根紅K", "成交量遞減"], ans: 1, expl: "紅三兵是底部反轉訊號，代表多方連續三天發動攻勢，趨勢可能翻多。" },
             { id: 39, category: "基礎內功", q: "KD指標中的D值，相較於K值，其特性為？", options: ["反應較快，波動大", "反應較慢，較平滑穩定", "只在熊市有效", "計算成交量"], ans: 1, expl: "D值是K值的平均，反應較慢但趨勢性較強，用來確認方向。" },
             { id: 40, category: "基礎內功", q: "當5日均線由上往下跌破20日均線，稱為？", options: ["黃金交叉", "死亡交叉", "多頭排列", "背離"], ans: 1, expl: "短均線跌破長均線，是轉弱的訊號，稱為死亡交叉。" },
-            
-            // Advanced & Strategy (41-65)
             { id: 41, category: "進階招式", q: "「島狀反轉」通常伴隨著什麼技術現象？", options: ["連續漲停", "左右兩邊都有跳空缺口", "成交量窒息", "均線糾結"], ans: 1, expl: "左右出現對稱缺口，股價像孤島一樣被隔開，是非常強烈的反轉訊號。" },
             { id: 42, category: "進階招式", q: "遇到「假跌破」翻紅（破底翻）時，積極的操作策略是？", options: ["站回支撐或突破頸線時買進", "逢高放空", "觀望", "加碼空單"], ans: 0, expl: "假跌破常是主力洗盤，一旦站回支撐，往往伴隨強勢軋空行情。" },
             { id: 43, category: "進階招式", q: "所謂「三線糾結」後的長紅突破，為什麼威力強大？", options: ["主力成本集中，市場共識一致", "散戶都在買", "基本面突然變好", "消息面利多"], ans: 0, expl: "均線糾結代表長中短線成本趨於一致，一旦突破，全市場皆獲利，賣壓最小。" },
@@ -302,8 +299,6 @@
             { id: 63, category: "進階招式", q: "什麼情況下「均線」會失去支撐與壓力的參考價值？", options: ["多頭趨勢", "空頭趨勢", "均線糾結且橫盤整理時", "剛上市"], ans: 2, expl: "盤整期均線糾結且走平，股價會反覆穿越均線，此時均線無助漲助跌功能。" },
             { id: 64, category: "進階招式", q: "外資與投信對作（土洋對作）時，操作上應偏向？", options: ["跟隨投信（較具波段與作帳動機）", "跟隨外資", "觀望", "反向操作"], ans: 0, expl: "在中小型股中，投信的作帳行情與爆發力通常優於外資，適合波段操作。" },
             { id: 65, category: "進階招式", q: "大量長紅突破頸線後，若出現回測頸線，只要不跌破？", options: ["快點賣出", "是絕佳的「回後買上漲」加碼點", "代表突破失敗", "準備放空"], ans: 1, expl: "突破後的量縮回測是確認支撐，只要頸線不破，就是第二次上車機會。" },
-
-            // Mindset & Psychology (66-80)
             { id: 66, category: "實戰心法", q: "「大賺小賠」的數學關鍵在於？", options: ["勝率100%", "盈虧比（賺賠比）的控制", "本金夠厚", "手續費低"], ans: 1, expl: "即使勝率只有40%，只要賺賠比達到3:1，長期依然能大賺。" },
             { id: 67, category: "實戰心法", q: "連續虧損時，最危險的行為是？", options: ["停止交易", "檢討", "急著想翻本，放大槓桿", "閱讀書籍"], ans: 2, expl: "急著翻本會導致情緒失控，往往忽視風險，造成毀滅性虧損。" },
             { id: 68, category: "實戰心法", q: "「不要與趨勢作對」這句話在實戰中意味著？", options: ["多頭不做空，空頭不做多", "隨便買隨便賺", "只買低價股", "只聽明牌"], ans: 0, expl: "順勢操作是生存法則，逆勢接刀或摸頭是散戶破產主因。" },
@@ -318,7 +313,29 @@
             { id: 77, category: "實戰心法", q: "聽到內線消息說某檔股票會噴，你該？", options: ["馬上All-in", "借錢買", "打開K線圖，確認是否有技術面訊號佐證", "不理會"], ans: 2, expl: "消息面常是主力出貨工具，必須搭配技術面（量價、型態）確認真偽。" },
             { id: 78, category: "實戰心法", q: "交易中最大的敵人通常是？", options: ["主力", "外資", "自己（情緒與心魔）", "政府"], ans: 2, expl: "貪婪、恐懼、希望、後悔，這些人性弱點才是導致虧損的主因。" },
             { id: 79, category: "實戰心法", q: "長期贏家的「穩定性」來自於？", options: ["運氣", "高勝率的系統 + 嚴格的風控", "內線消息", "龐大的資金"], ans: 1, expl: "沒有聖杯，只有期望值為正的系統配合鐵一般的紀律，才能長期存活。" },
-            { id: 80, category: "實戰心法", q: "如果你發現自己交易時心跳加速、手心冒汗，代表？", options: ["很興奮", "部位過大（風險超出承受力）", "生病了", "運氣來了"], ans: 1, expl: "情緒波動過大意味著風險失控，應減少部位，回到能安心睡覺的倉位大小。" }
+            { id: 80, category: "實戰心法", q: "如果你發現自己交易時心跳加速、手心冒汗，代表？", options: ["很興奮", "部位過大（風險超出承受力）", "生病了", "運氣來了"], ans: 1, expl: "情緒波動過大意味著風險失控，應減少部位，回到能安心睡覺的倉位大小。" },
+
+            // NEW QUESTIONS (81-100)
+            { id: 81, category: "進階招式", q: "艾略特波浪理論中，一個完整的週期包含幾個波？", options: ["5波", "3波", "8波（5升3降）", "10波"], ans: 2, expl: "完整的波浪週期包含5個驅動波(1,2,3,4,5)和3個修正波(A,B,C)，共8波。" },
+            { id: 82, category: "進階招式", q: "在多頭波浪中，第幾波通常被認為是「主升段」，漲幅最大且最猛？", options: ["第1波", "第2波", "第3波", "第5波"], ans: 2, expl: "第3波通常是主升段，成交量最大，漲勢最猛烈，且絕不會是三個推動波中最短的一波。" },
+            { id: 83, category: "進階招式", q: "「費波那契回撤」中，哪個比例被視為多頭回檔的強勢支撐（黃金切割率）？", options: ["0.382", "0.5", "0.618", "0.786"], ans: 2, expl: "0.618 是黃金分割率，在趨勢回調中常作為強力支撐或壓力的參考點。" },
+            { id: 84, category: "進階招式", q: "當KD指標與股價出現「高檔背離」，且伴隨RSI也背離，這被稱為？", options: ["雙重背離（強烈反轉訊號）", "指標失靈", "多頭續攻", "整理"], ans: 0, expl: "多個指標同時出現背離，反轉的可靠度與機率大幅提升。" },
+            { id: 85, category: "進階招式", q: "「貫穿線」(Piercing Line) 型態若出現在低檔，第二根長紅K實體必須收在哪裡？", options: ["第一根黑K實體的一半以上", "第一根黑K的高點之上", "第一根黑K的低點之下", "隨意"], ans: 0, expl: "貫穿線要求第二根紅K收盤價必須穿越前一根黑K實體的中點(50%)以上，才算多方強勢反擊。" },
+            { id: 86, category: "進階招式", q: "量價關係中，「價平量大」發生在低檔，通常代表？", options: ["主力在吃貨（吸籌）", "主力在出貨", "散戶在買", "無意義"], ans: 0, expl: "股價跌無可跌，但成交量放大，顯示有大戶在底部低接籌碼，為打底跡象。" },
+            { id: 87, category: "實戰心法", q: "什麼是「沉沒成本謬誤」(Sunk Cost Fallacy) 在交易中的表現？", options: ["因為已經賠了很多，所以捨不得停損，想凹單凹回來", "嚴格執行停損", "分批進場", "順勢操作"], ans: 0, expl: "不甘心已實現的虧損（沉沒成本），導致做出更不理性的決策（凹單），往往賠更多。" },
+            { id: 88, category: "進階招式", q: "多重時間週期分析(MTF)的核心原則是什麼？", options: ["小週期服從大週期", "大週期服從小週期", "只看5分K", "只看月線"], ans: 0, expl: "大週期（如週線）決定趨勢方向，小週期（如日線、60分K）尋找進場點。小趨勢受制於大趨勢。" },
+            { id: 89, category: "進階招式", q: "「ATR指標」(平均真實波幅) 主要用來衡量什麼？", options: ["趨勢方向", "市場波動率（Volatility）", "成交量", "超買超賣"], ans: 1, expl: "ATR用來計算價格波動的幅度，常用於設定動態停損點（例如 2倍ATR停損）。" },
+            { id: 90, category: "進階招式", q: "當支撐線被帶量跌破後，這條線的角色會轉變為？", options: ["無效線", "新的壓力線（支撐變壓力）", "還是支撐", "趨勢線"], ans: 1, expl: "支撐跌破後，原先買進的人全部套牢，反彈至此會遇解套賣壓，故轉為壓力。" },
+            { id: 91, category: "進階招式", q: "「杯柄型態」(Cup and Handle) 的最佳買點通常在？", options: ["杯底", "杯口突破（突破柄部高點）", "杯子左邊", "柄部下跌時"], ans: 1, expl: "杯柄型態完成整理後，突破杯口壓力區（柄部高點）時，是標準的趨勢發動買點。" },
+            { id: 92, category: "進階招式", q: "「三尊頭」（頭肩頂）型態中，右肩的高度通常？", options: ["比頭部高", "比頭部低", "一定要跟左肩一樣高", "不重要"], ans: 1, expl: "右肩反彈無力突破頭部高點，顯示多頭力竭，是型態完成的特徵之一。" },
+            { id: 93, category: "進階招式", q: "在葛蘭碧八大法則中，均線下彎且股價反彈至均線附近受阻再跌，是？", options: ["買進訊號", "賣出訊號（放空點）", "觀望", "加碼"], ans: 1, expl: "此為空頭架構下的壓力測試，反彈不過均線壓力，是順勢放空的絕佳點位。" },
+            { id: 94, category: "實戰心法", q: "「倒金字塔式」加碼（越漲買越多）的主要風險是？", options: ["賺太少", "成本墊高太快，一個回檔就可能轉盈為虧", "手續費高", "券商不准"], ans: 1, expl: "正確應為正金字塔加碼（底部買最多，越上去加碼越少），倒金字塔會導致平均成本過高，重心不穩。" },
+            { id: 95, category: "進階招式", q: "什麼是「假突破」的K線特徵？", options: ["長紅實體收最高", "突破壓力後收長上影線或黑K跌回壓力之下", "跳空漲停", "量縮上漲"], ans: 1, expl: "盤中突破但收盤站不穩，留長上影線或黑K，代表突破失敗，常伴隨誘多殺盤。" },
+            { id: 96, category: "實戰心法", q: "「報復性交易」通常發生在什麼時候？", options: ["大賺之後", "剛停損或大賠後，想急著證明自己或把錢贏回來", "開盤前", "放假時"], ans: 1, expl: "這是情緒失控的表現，為了「報復」市場而頻繁進出，通常會加速虧損。" },
+            { id: 97, category: "進階招式", q: "在箱型整理（矩形）中，成交量的特徵通常是？", options: ["持續放大", "不規則", "隨著波段起伏，但在突破前通常量縮", "一路上漲"], ans: 2, expl: "整理末端成交量會萎縮（浮額清洗），等待帶量突破方向。" },
+            { id: 98, category: "進階招式", q: "「光頭光腳」的長紅棒（Marubozu）代表？", options: ["多方勢力從開盤強勢到收盤，毫無懸念", "空方強勢", "多空平衡", "變盤"], ans: 0, expl: "沒有上下影線的長紅，代表多方從頭贏到尾，是最強勢的K線訊號。" },
+            { id: 99, category: "實戰心法", q: "當你手中的股票虧損擴大，但你卻開始研究該公司的基本面利多來安慰自己，這是？", options: ["理性分析", "確認偏差（Confirmation Bias）", "停損策略", "價值投資"], ans: 1, expl: "只尋找支持自己看法（不想賣）的證據，而忽略客觀的空頭訊號，是人性的心理陷阱。" },
+            { id: 100, category: "實戰心法", q: "「The Trend is your Friend」意味著交易者應該？", options: ["跟隨趨勢順勢操作，直到趨勢改變", "和朋友一起買股票", "逆勢操作", "創造趨勢"], ans: 0, expl: "這句名言強調順勢交易的重要性，趨勢一旦形成，往往會延續一段時間。" }
         ];
 
         // State
@@ -360,7 +377,7 @@
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-4">
                         <span class="text-xs font-mono px-2 py-1 rounded border ${tagColor}">${q.category}</span>
-                        <span class="text-slate-500 font-mono text-xs">NO.${String(q.id).padStart(2, '0')}</span>
+                        <span class="text-slate-500 font-mono text-xs">NO.${String(q.id).padStart(3, '0')}</span>
                     </div>
                     <h3 class="font-bold text-white text-lg mb-4 min-h-[3.5rem]">${q.q}</h3>
                     <div class="relative group">
@@ -383,9 +400,9 @@
 
         // Quiz Logic
         function startSimulation() {
-            // Randomly select 10 questions
+            // Randomly select 20 questions
             const shuffled = [...questionsDB].sort(() => 0.5 - Math.random());
-            currentQuiz = shuffled.slice(0, 10);
+            currentQuiz = shuffled.slice(0, 20);
             currentQuestionIndex = 0;
             score = 0;
             wrongAnswers = [];
@@ -401,9 +418,9 @@
             quizCard.category.textContent = q.category;
             quizCard.question.textContent = q.q;
             quizCard.feedback.classList.add('hidden');
-            quizCard.progressText.textContent = `QUESTION ${String(currentQuestionIndex + 1).padStart(2, '0')}/10`;
+            quizCard.progressText.textContent = `QUESTION ${String(currentQuestionIndex + 1).padStart(2, '0')}/20`;
             quizCard.scoreText.textContent = `SCORE: ${score}`;
-            quizCard.progressBar.style.width = `${((currentQuestionIndex) / 10) * 100}%`;
+            quizCard.progressBar.style.width = `${((currentQuestionIndex) / 20) * 100}%`;
 
             // Color code category
             if(q.category === "進階招式") quizCard.category.className = "inline-block px-2 py-1 bg-slate-900 rounded text-xs text-purple-400 font-mono mb-3 border border-purple-900";
@@ -434,7 +451,8 @@
             const isCorrect = selectedIdx === q.ans;
 
             if (isCorrect) {
-                score += 10;
+                // Adjust score to 5 points per question (20 questions * 5 = 100 max)
+                score += 5;
                 btnElement.classList.remove('bg-slate-700/50', 'border-slate-600');
                 btnElement.classList.add('bg-emerald-900/50', 'border-emerald-500');
                 btnElement.querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
@@ -462,7 +480,7 @@
 
         function nextQuestion() {
             currentQuestionIndex++;
-            if (currentQuestionIndex < 10) {
+            if (currentQuestionIndex < 20) {
                 loadQuestion();
             } else {
                 showResults();
