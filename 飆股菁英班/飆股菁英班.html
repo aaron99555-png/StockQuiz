@@ -79,7 +79,7 @@
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <button onclick="switchView('home')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">首頁</button>
-                            <button onclick="switchView('archive')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">機密題庫 (100題)</button>
+                            <button onclick="switchView('archive')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">機密題庫 (150題)</button>
                             <button onclick="startSimulation()" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-sky-500 transition shadow-lg shadow-sky-900/50">開始模擬 (隨機20題)</button>
                         </div>
                     </div>
@@ -98,14 +98,14 @@
         <div id="view-home" class="animate-fade-in flex flex-col items-center justify-center min-h-[80vh] text-center">
             <div class="mb-8 relative inline-block">
                 <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-25 animate-pulse"></div>
-                <span class="relative px-4 py-1 bg-slate-800 rounded-full text-xs font-mono text-cyan-300 border border-cyan-500/30">VER 4.0 // TECH_ANALYSIS_BOOTCAMP</span>
+                <span class="relative px-4 py-1 bg-slate-800 rounded-full text-xs font-mono text-cyan-300 border border-cyan-500/30">VER 5.0 // MASTER_CLASS</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
                 實戰操盤<span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">特訓戰情室</span>
             </h1>
             <p class="text-xl text-slate-400 max-w-2xl mb-12 font-light">
-                「勝負不放在心上，只注重在正確的位置，做正確的事。」<br>
-                100道淬鍊題庫，打造鋼鐵般的紀律與眼光。
+                「在市場面前保持謙卑，在訊號面前保持果斷。」<br>
+                150道大師級試煉，挑戰你的技術極限。
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
@@ -114,7 +114,7 @@
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.624 5.832 20 7.5 20s3.332-.376 3.332-1.747M12 6.253c1.168-.776 2.754-1.253 4.5-1.253s3.332.477 3.332 1.253v13C19.832 19.624 18.168 20 16.5 20s-3.332-.376-3.332-1.747"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">閱覽機密題庫</h3>
-                    <p class="text-slate-400">完整存取 100 道核心技術分析試題，包含波浪、K線、均線、型態、量價與心法。</p>
+                    <p class="text-slate-400">完整存取 150 道高階技術分析試題，包含複雜型態、指標背離與資金控管模型。</p>
                 </div>
 
                 <div onclick="startSimulation()" class="group cursor-pointer bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-emerald-500 rounded-2xl p-8 transition-all duration-300 neon-border relative overflow-hidden">
@@ -125,17 +125,17 @@
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     </div>
                     <h3 class="text-2xl font-bold text-white mb-2">啟動實戰模擬</h3>
-                    <p class="text-slate-400">系統將隨機抽取 20 題進行測驗。測試你的即時反應與判斷力。</p>
+                    <p class="text-slate-400">系統將隨機抽取 20 題進行測驗。難度提升，測試你的大師級判斷力。</p>
                 </div>
             </div>
         </div>
 
-        <!-- View: Archive (100 Questions) -->
+        <!-- View: Archive (150 Questions) -->
         <div id="view-archive" class="hidden">
             <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
                 <div>
                     <h2 class="text-3xl font-bold text-white">機密檔案庫</h2>
-                    <p class="text-slate-400 font-mono mt-1">TOTAL_RECORDS: 100 // ACCESS_LEVEL: UNRESTRICTED</p>
+                    <p class="text-slate-400 font-mono mt-1">TOTAL_RECORDS: 150 // ACCESS_LEVEL: MASTER</p>
                 </div>
                 <div class="flex space-x-2">
                     <span class="px-3 py-1 rounded bg-blue-900/30 text-blue-400 text-xs border border-blue-800">基礎內功</span>
@@ -225,7 +225,7 @@
 
     <!-- Data & Logic -->
     <script>
-        // 100 Questions Data
+        // 150 Questions Data
         const questionsDB = [
             // Phase 1: Basic (Original 1-10)
             { id: 1, category: "基礎內功", q: "多頭趨勢（牛市）最核心的定義「底底高、頭頭高」是指什麼？", options: ["股價站上所有均線", "低點比前低高，高點突破前高", "成交量持續放大", "KD黃金交叉"], ans: 1, expl: "正確。多頭趨勢的定義就是每一個回檔的低點比前一個低點高（底底高），且每一個上漲的高點突破前一個高點（頭頭高）。" },
@@ -315,7 +315,7 @@
             { id: 79, category: "實戰心法", q: "長期贏家的「穩定性」來自於？", options: ["運氣", "高勝率的系統 + 嚴格的風控", "內線消息", "龐大的資金"], ans: 1, expl: "沒有聖杯，只有期望值為正的系統配合鐵一般的紀律，才能長期存活。" },
             { id: 80, category: "實戰心法", q: "如果你發現自己交易時心跳加速、手心冒汗，代表？", options: ["很興奮", "部位過大（風險超出承受力）", "生病了", "運氣來了"], ans: 1, expl: "情緒波動過大意味著風險失控，應減少部位，回到能安心睡覺的倉位大小。" },
 
-            // NEW QUESTIONS (81-100)
+            // Questions 81-100 (Previous Batch)
             { id: 81, category: "進階招式", q: "艾略特波浪理論中，一個完整的週期包含幾個波？", options: ["5波", "3波", "8波（5升3降）", "10波"], ans: 2, expl: "完整的波浪週期包含5個驅動波(1,2,3,4,5)和3個修正波(A,B,C)，共8波。" },
             { id: 82, category: "進階招式", q: "在多頭波浪中，第幾波通常被認為是「主升段」，漲幅最大且最猛？", options: ["第1波", "第2波", "第3波", "第5波"], ans: 2, expl: "第3波通常是主升段，成交量最大，漲勢最猛烈，且絕不會是三個推動波中最短的一波。" },
             { id: 83, category: "進階招式", q: "「費波那契回撤」中，哪個比例被視為多頭回檔的強勢支撐（黃金切割率）？", options: ["0.382", "0.5", "0.618", "0.786"], ans: 2, expl: "0.618 是黃金分割率，在趨勢回調中常作為強力支撐或壓力的參考點。" },
@@ -335,7 +335,59 @@
             { id: 97, category: "進階招式", q: "在箱型整理（矩形）中，成交量的特徵通常是？", options: ["持續放大", "不規則", "隨著波段起伏，但在突破前通常量縮", "一路上漲"], ans: 2, expl: "整理末端成交量會萎縮（浮額清洗），等待帶量突破方向。" },
             { id: 98, category: "進階招式", q: "「光頭光腳」的長紅棒（Marubozu）代表？", options: ["多方勢力從開盤強勢到收盤，毫無懸念", "空方強勢", "多空平衡", "變盤"], ans: 0, expl: "沒有上下影線的長紅，代表多方從頭贏到尾，是最強勢的K線訊號。" },
             { id: 99, category: "實戰心法", q: "當你手中的股票虧損擴大，但你卻開始研究該公司的基本面利多來安慰自己，這是？", options: ["理性分析", "確認偏差（Confirmation Bias）", "停損策略", "價值投資"], ans: 1, expl: "只尋找支持自己看法（不想賣）的證據，而忽略客觀的空頭訊號，是人性的心理陷阱。" },
-            { id: 100, category: "實戰心法", q: "「The Trend is your Friend」意味著交易者應該？", options: ["跟隨趨勢順勢操作，直到趨勢改變", "和朋友一起買股票", "逆勢操作", "創造趨勢"], ans: 0, expl: "這句名言強調順勢交易的重要性，趨勢一旦形成，往往會延續一段時間。" }
+            { id: 100, category: "實戰心法", q: "「The Trend is your Friend」意味著交易者應該？", options: ["跟隨趨勢順勢操作，直到趨勢改變", "和朋友一起買股票", "逆勢操作", "創造趨勢"], ans: 0, expl: "這句名言強調順勢交易的重要性，趨勢一旦形成，往往會延續一段時間。" },
+            
+            // NEW HARD QUESTIONS (101-150)
+            { id: 101, category: "進階招式", q: "關於「菱形頂」(Diamond Top) 的特徵，下列何者正確？", options: ["通常發生在底部", "由擴散型態接收斂型態組成，是大跌前兆", "是看漲的中繼型態", "成交量會持續放大"], ans: 1, expl: "菱形頂是非常罕見且強烈的頭部反轉訊號，前半部高點更高低點更低(擴散)，後半部高點更低低點更高(收斂)。" },
+            { id: 102, category: "進階招式", q: "當MACD指標產生「柱狀體背離」（價格創新高，柱狀體紅棒卻變短），暗示？", options: ["多頭力道轉弱，是比DIF交叉更早的警訊", "多頭氣勢如虹", "空方完全棄守", "盤整"], ans: 0, expl: "柱狀體代表多空力道的加速度，柱狀體背離通常是趨勢力竭的最早期訊號。" },
+            { id: 103, category: "進階招式", q: "在費波那契擴展(Extension)中，哪一個數值常用來預測波段的「漲幅滿足點」？", options: ["0.618", "1.0", "1.618", "0.236"], ans: 2, expl: "1.618 是黃金螺旋擴展倍數，常被用來測量第三波或第五波的目標滿足價位。" },
+            { id: 104, category: "實戰心法", q: "什麼是「凱利公式」(Kelly Criterion) 在交易中的核心應用？", options: ["預測股價", "計算最佳資金下注比例以最大化長期增長", "計算停損點", "選股"], ans: 1, expl: "凱利公式根據勝率與賠率，計算出單筆交易應投入的最佳資金比例，避免破產並最大化複利。" },
+            { id: 105, category: "進階招式", q: "布林通道的「走樂隊」(Walking the Bands) 現象是指？", options: ["股價在通道內震盪", "股價沿著上軌(或下軌)持續上漲(或下跌)，是強烈趨勢盤", "通道變窄", "股價突破中軌"], ans: 1, expl: "當股價緊貼著上軌持續創新高，且不回破中軌，代表極強勢的多頭行情，不應輕易逆勢放空。" },
+            { id: 106, category: "進階招式", q: "「下降楔形」(Falling Wedge) 在多頭趨勢的回檔中出現，通常視為？", options: ["看跌型態", "看漲的中繼型態", "頭部型態", "盤整"], ans: 1, expl: "下降楔形雖然高點降低低點也降低，但收斂角度顯示空方力竭，突破上緣後往往伴隨大漲。" },
+            { id: 107, category: "實戰心法", q: "「處置效應」(Disposition Effect) 指的是投資人傾向？", options: ["太早賣出獲利股票，卻死抱虧損股票", "太晚賣出獲利股票", "太早停損", "不買股票"], ans: 0, expl: "人性厭惡實現虧損（不想承認錯誤），卻急於落袋為安（想要確定的獎勵），導致「截斷獲利，讓虧損奔跑」。" },
+            { id: 108, category: "進階招式", q: "量價結構中，「量縮價跌」在空頭跌勢的末端（急跌後）出現，可能暗示？", options: ["殺盤動力耗盡，有機會止跌", "跌勢剛開始", "主力出貨", "無量下跌"], ans: 0, expl: "急跌一段後量能急縮，代表想賣的人都賣光了，賣壓竭盡，有機會醞釀反彈。" },
+            { id: 109, category: "進階招式", q: "若股價跌破頸線後反彈測試頸線，量能放大但無法站回，這叫？", options: ["假跌破", "逃命波（確認壓力）", "回升波", "主升段"], ans: 1, expl: "反彈測頸線是最後的逃命機會，量大不漲回，確認頸線由支撐轉為實質壓力。" },
+            { id: 110, category: "實戰心法", q: "當你設定了「移動停利」(Trailing Stop) 後，最忌諱的行為是？", options: ["隨著獲利增加往上調高停利點", "當股價回檔接近停利點時，往下移動停利點", "嚴格執行", "忘記設定"], ans: 1, expl: "往下移動停利點等於是擴大潛在虧損並違背原先計畫，會讓獲利回吐甚至轉盈為虧。" },
+            { id: 111, category: "進階招式", q: "「RSI背離」發生在RSI指標的哪個區間最為有效？", options: ["50附近", "20以下或80以上（極端區）", "隨意", "交叉時"], ans: 1, expl: "背離訊號在超買區(>80)或超賣區(<20)出現時，反轉的可信度最高。" },
+            { id: 112, category: "進階招式", q: "「三鴉懸空」(Three Black Crows) 型態出現在高檔，其特徵為？", options: ["連續三根長紅", "連續三根開低走低收最低的黑K，且每天開盤在前一天實體內", "三根十字線", "量縮上漲"], ans: 1, expl: "這是極為惡劣的崩盤前兆，代表主力不計價連續殺盤，多頭潰敗。" },
+            { id: 113, category: "進階招式", q: "如何分辨「真突破」與「假突破」的量能差異？", options: ["真突破量縮，假突破量大", "真突破必須溫和放量，假突破常爆天量後無力", "兩者沒差", "看運氣"], ans: 1, expl: "真突破需要扎實的買盤推升（溫和放量），異常的爆天量常是籌碼混亂或主力對倒的假象。" },
+            { id: 114, category: "進階招式", q: "在威科夫操盤法(Wyckoff)中，底部的「Spring」(彈簧/震倉) 意指？", options: ["跌破支撐後迅速拉回，清洗浮額的假跌破", "突破壓力", "盤整", "出貨"], ans: 0, expl: "Spring是主力在拉抬前的最後一次洗盤，故意跌破支撐把不堅定的籌碼洗掉，隨後快速拉升。" },
+            { id: 115, category: "進階招式", q: "關於「跳空缺口」，若在除權息當日發生的缺口，技術分析上應如何看待？", options: ["視為強力支撐", "視為強力壓力", "應透過「還原權值」K線圖來判斷其實際多空意義", "忽略不計"], ans: 2, expl: "除權息造成的缺口是數學計算結果，非市場買賣力道造成，必須看還原圖才能判斷真實趨勢。" },
+            { id: 116, category: "實戰心法", q: "「過度交易」(Overtrading) 的主要成因通常不包括？", options: ["想快速致富", "無聊尋求刺激", "嚴格遵守交易計畫", "報復市場"], ans: 2, expl: "嚴格遵守計畫通常會減少交易頻率，過度交易多源於情緒或缺乏紀律。" },
+            { id: 117, category: "進階招式", q: "當週線KD黃金交叉，但日線KD高檔鈍化，應如何操作？", options: ["放空", "順勢做多，日線鈍化代表波段強勢", "出場觀望", "反向操作"], ans: 1, expl: "長線(週)保護短線(日)，週線轉多且日線鈍化，代表主升段行情，是獲利最豐厚的一段。" },
+            { id: 118, category: "進階招式", q: "「碟型底」(Rounding Bottom) 的形成時間通常？", options: ["很短", "很長，主力慢火燉煮", "一天", "不一定"], ans: 1, expl: "碟型底是長期的底部型態，主力透過長時間的緩跌緩漲慢慢吸籌，爆發力極強。" },
+            { id: 119, category: "進階招式", q: "「乖離率」(BIAS) 的交易策略中，逆勢操作(搶反彈)的風險在於？", options: ["指標鈍化（乖離可以更乖離）", "手續費", "看不懂", "量能不足"], ans: 0, expl: "在強烈趨勢中，股價可以連續噴出造成正乖離持續擴大(鈍化)，此時逆勢放空會被軋上天。" },
+            { id: 120, category: "進階招式", q: "「內困三日翻紅」(Three Inside Up) 是哪三根K線的組合？", options: ["長黑+長紅+長黑", "長黑+被包覆的小紅/十字+收盤突破長黑高點的長紅", "紅+黑+紅", "黑+黑+黑"], ans: 1, expl: "第一根長黑，第二根被包覆在長黑內(母子)，第三根長紅突破第一根高點，確認反轉。" },
+            { id: 121, category: "進階招式", q: "當股價突破下降趨勢線(切線)時，最安全的買點是？", options: ["突破瞬間", "突破後回測趨勢線不破，勾頭向上時", "突破前", "突破後爆量"], ans: 1, expl: "突破瞬間可能有假突破風險，等待回測確認支撐有效再進場，勝率最高。" },
+            { id: 122, category: "實戰心法", q: "交易系統中的「期望值」(Expectancy) 計算公式為？", options: ["(勝率 × 平均獲利) - (敗率 × 平均虧損)", "勝率 × 賠率", "獲利金額 - 虧損金額", "勝率 + 敗率"], ans: 0, expl: "期望值是正的，代表這套系統長期下來能賺錢；若是負的，交易越多賠越多。" },
+            { id: 123, category: "進階招式", q: "在均線扣抵觀念中，若扣抵值在未來一週將「由下往上」急劇升高，對目前均線的影響是？", options: ["助漲", "助跌（均線容易下彎壓力變大）", "沒影響", "盤整"], ans: 1, expl: "扣抵高價區代表舊的低價移出、新的可能較低價移入，平均成本難以上升，均線容易下彎形成蓋頭反壓。" },
+            { id: 124, category: "進階招式", q: "關於「V型反轉」(V-Reversal)，操作難度高的原因在於？", options: ["沒有打底過程，速度太快難以切入", "量能太小", "型態太醜", "主力不愛"], ans: 0, expl: "V轉通常發生在消息面劇變，缺乏底部的籌碼沉澱，往往來不及確認就噴出，追價風險高。" },
+            { id: 125, category: "進階招式", q: "「孕育線」(Harami) 若出現在漲勢末端，暗示？", options: ["趨勢加速", "多頭力道受阻，行情可能轉為盤整或反轉", "主力加碼", "無意義"], ans: 1, expl: "長紅棒後出現一根被包覆的小黑或小紅，代表多方動能突然消失，是變盤的前兆。" },
+            { id: 126, category: "進階招式", q: "在籌碼分析中，若「融資餘額」持續增加但股價卻持續下跌，代表？", options: ["散戶在接刀，籌碼凌亂（散戶套牢）", "主力在買", "反彈在即", "融資軋空"], ans: 0, expl: "融資通常代表散戶指標，股價跌融資增，代表散戶不死心沿路攤平，籌碼落入弱者手中，易跌難漲。" },
+            { id: 127, category: "實戰心法", q: "「倖存者偏差」(Survivorship Bias) 在選股研究中的誤區是？", options: ["只看到飆股的特徵，忽略了具備同樣特徵但失敗下市的股票", "只看基本面", "只看技術面", "只聽消息"], ans: 0, expl: "若只研究成功的飆股，會誤以為某種訊號必勝，卻忘了死在同樣訊號下的無數亡魂。" },
+            { id: 128, category: "進階招式", q: "當發生「多頭背離」(底背離) 時，股價與指標的關係是？", options: ["股價創新低，指標沒創新低（甚至墊高）", "股價創新高，指標沒創新高", "股價跟指標同步新低", "股價跟指標同步新高"], ans: 0, expl: "價格跌破前低，但指標(如KD/RSI)不再破低，顯示殺盤力道減弱，是底部反轉訊號。" },
+            { id: 129, category: "進階招式", q: "在波浪理論中，修正波的形態通常比驅動波更？", options: ["簡單", "複雜且耗時（如鋸齒、平台、三角整理）", "快速", "規則"], ans: 1, expl: "修正波(A-B-C)的變化多端，經常出現複合型態，是操作難度最高的階段。" },
+            { id: 130, category: "進階招式", q: "對於「除息」造成的缺口，若能在短時間內（例如3天）完全回補（填息），代表？", options: ["多頭氣勢極強", "空頭氣勢強", "主力出貨", "盤整"], ans: 0, expl: "快速填息代表市場對公司未來極度看好，不願讓股價停留在低檔，是強勢多頭特徵。" },
+            { id: 131, category: "進階招式", q: "「一字底」(Flat Base) 整理期通常需要多久以上才具備爆發力？", options: ["3天", "5週甚至更久", "10分鐘", "1年"], ans: 1, expl: "根據坎斯林(CAN SLIM)法則，穩固的底部整理至少需要數週，籌碼換手乾淨後，突破才有力。" },
+            { id: 132, category: "實戰心法", q: "在虧損時，為了「攤平成本」而加碼，這在專業交易中被視為？", options: ["高明的策略", "大忌（向下攤平是接刀子）", "必要的手段", "唯一的選擇"], ans: 1, expl: "華爾街名言：Losers Average Losers. 虧損代表你看錯，加碼只會讓錯誤放大，甚至導致斷頭。" },
+            { id: 133, category: "進階招式", q: "當股價在高檔出現「流星線」(Shooting Star)，且成交量爆大，確認反轉的關鍵是？", options: ["隔日開低或收破流星線低點", "隔日開高", "不用確認", "隔日漲停"], ans: 0, expl: "單一K線不足以確認，必須等隔日空方表態（跌破低點），才確認流星線的壓力有效。" },
+            { id: 134, category: "進階招式", q: "「OBV指標」(能量潮) 創新高，但股價尚未創新高，通常暗示？", options: ["量先價行，股價隨後可能跟進創新高", "主力出貨", "指標失靈", "看空"], ans: 0, expl: "OBV累計了買盤能量，先行創高代表資金已經進駐，股價落後補漲機率大。" },
+            { id: 135, category: "進階招式", q: "在上升通道中，股價跌破下軌道線，是？", options: ["買點", "趨勢轉弱或轉空的警訊", "加碼點", "正常回檔"], ans: 1, expl: "通道下軌是上升趨勢的支撐線，一旦跌破，代表上升慣性被打破，多頭應避險。" },
+            { id: 136, category: "實戰心法", q: "「黑天鵝效應」對交易者的啟示是？", options: ["黑天鵝不會發生", "永遠要為不可預測的極端風險預留後路（風控）", "預測黑天鵝", "忽視它"], ans: 1, expl: "極端事件無法預測但影響巨大，唯有嚴格的資金控管與停損，才能在黑天鵝來襲時存活。" },
+            { id: 137, category: "進階招式", q: "關於「支撐與壓力互換」原則，當壓力突破後，未來股價回測該價位時，它會變成？", options: ["壓力", "支撐", "無效", "阻力"], ans: 1, expl: "突破後的壓力線，因投資人解套獲利心態轉變及新買盤進駐，會轉變為支撐線。" },
+            { id: 138, category: "進階招式", q: "技術分析中的「2B法則」(反轉法則) 是指？", options: ["股價創新高後隨即跌回前波高點之下，暗示假突破與潛在反轉", "兩次買進", "兩個底部", "B波反彈"], ans: 0, expl: "2B法則專門用來捕捉假突破後的反轉行情，是勝率極高的逆勢操作技巧。" },
+            { id: 139, category: "進階招式", q: "當月線、季線、半年線、年線全部糾結在一起，且股價在其上，稱為？", options: ["四線合一，多頭共振", "空頭排列", "盤整", "乖離過大"], ans: 0, expl: "長短天期均線匯聚，代表長線短線成本一致且籌碼安定，一旦發動往往是大波段行情。" },
+            { id: 140, category: "實戰心法", q: "為什麼在重大利多公佈「前」股價往往已經大漲？", options: ["散戶先知先覺", "內線交易與聰明錢(Smart Money)早已卡位（Price discounts everything）", "運氣好", "巧合"], ans: 1, expl: "股價會提前反應未來預期，等到利多見報，聰明錢已經準備獲利了結（利多出盡）。" },
+            { id: 141, category: "進階招式", q: "CDP指標(逆勢操作系統)主要適用於哪種盤勢？", options: ["強趨勢盤", "無趨勢的盤整震盪盤", "崩盤", "飆漲盤"], ans: 1, expl: "CDP利用前一日高低收計算短線支撐壓力，適合在盤整盤中高出低進，趨勢盤則容易過早出場或逆勢受傷。" },
+            { id: 142, category: "進階招式", q: "在日線圖出現「並列紅黑K」(Side-by-side lines)，且發生在跳空缺口之後，通常代表？", options: ["趨勢延續", "反轉", "盤整", "主力出貨"], ans: 0, expl: "多頭趨勢中跳空後出現並列線，代表多方在高檔換手積極，缺口不補，趨勢將延續。" },
+            { id: 143, category: "進階招式", q: "「SAR指標」(拋物線指標) 的主要用途是？", options: ["預測高點", "移動停損(Trailling Stop)與趨勢跟隨", "看成交量", "看基本面"], ans: 1, expl: "SAR 的點位會隨著股價趨勢移動，一旦股價觸及SAR點位即反轉訊號，非常適合作為移動停利點。" },
+            { id: 144, category: "實戰心法", q: "當你發現你的交易系統在某段時間連續失效，你應該？", options: ["加倍下注", "放棄該系統", "暫停交易，檢視市場屬性是否改變（例如從趨勢盤變盤整盤）", "罵髒話"], ans: 2, expl: "沒有一套系統能適應所有盤勢，連續失效通常是因為盤勢特性改變（如趨勢策略遇到盤整盤），應暫停並調整。" },
+            { id: 145, category: "進階招式", q: "關於「主力吸籌」的量價特徵，下列何者錯誤？", options: ["量縮價穩", "利空不跌", "爆大量長黑破底後不反彈", "低檔出現紅K多於黑K"], ans: 2, expl: "爆大量長黑破底且不反彈，代表主力棄守或甚至主力也在賣，絕非吸籌。" },
+            { id: 146, category: "進階招式", q: "在K線型態中，「身懷六甲」(母子線) 的子線若突破母線高點，稱為？", options: ["母子變盤", "內困三日翻紅的確認", "假突破", "懷孕"], ans: 1, expl: "母子線本是盤整觀望訊號，一旦子線突破母線高點，即確認多方表態，轉為攻擊訊號。" },
+            { id: 147, category: "進階招式", q: "CCI指標在+100與-100之間波動時，通常被視為？", options: ["趨勢盤", "常態分佈區（盤整區）", "超買區", "超賣區"], ans: 1, expl: "CCI突破+100代表進入強勢趨勢區，跌破-100進入弱勢趨勢區，中間則為無趨勢震盪。" },
+            { id: 148, category: "實戰心法", q: "「機會成本」在交易中的應用是指？", options: ["資金卡在不會動的股票上，錯失了其他飆股的獲利機會", "手續費", "稅金", "時間成本"], ans: 0, expl: "死抱爛股不只會有帳面虧損，更嚴重的是看不見的機會成本，讓你無法參與其他強勢股的行情。" },
+            { id: 149, category: "進階招式", q: "當一檔股票的「周轉率」突然過高（例如單日>20%），且股價在高檔滯漲，暗示？", options: ["人氣匯集，還會漲", "主力換手給散戶（籌碼極度不穩）", "基本面大好", "無意義"], ans: 1, expl: "高檔周轉率過高代表籌碼極度混亂，通常是主力趁人氣沸騰時倒貨給散戶的跡象。" },
+            { id: 150, category: "進階招式", q: "技術分析的「碎形」(Fractal) 概念是指？", options: ["K線破掉", "不同時間週期（月/週/日/分）圖表存在相似的型態結構", "均線糾結", "指標背離"], ans: 1, expl: "市場具有碎形幾何特性，大週期的型態往往由小週期的相似型態組成，這也是多重週期分析的基礎。" }
         ];
 
         // State
