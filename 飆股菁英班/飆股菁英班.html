@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>實戰操盤特訓戰情室 | Trading War Room</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .neon-border {
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-color: #38bdf8;
+        }
+        .glitch-effect {
+            position: relative;
+        }
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #0ea5e9, #2563eb);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 15px #0ea5e9;
+            transform: scale(1.05);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="border-b border-slate-700 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <span class="text-2xl font-black text-sky-400 tracking-tighter neon-text">飆股<span class="text-white">菁英班</span></span>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <button onclick="switchView('home')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">首頁</button>
+                            <button onclick="switchView('archive')" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">機密題庫 (30題)</button>
+                            <button onclick="startSimulation()" class="bg-sky-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-sky-500 transition shadow-lg shadow-sky-900/50">開始模擬 (隨機10題)</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <span class="text-xs text-slate-500 font-mono">SYS.READY</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main id="app-container" class="flex-grow container mx-auto px-4 py-8 relative">
+        
+        <!-- View: Home -->
+        <div id="view-home" class="animate-fade-in flex flex-col items-center justify-center min-h-[80vh] text-center">
+            <div class="mb-8 relative inline-block">
+                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-25 animate-pulse"></div>
+                <span class="relative px-4 py-1 bg-slate-800 rounded-full text-xs font-mono text-cyan-300 border border-cyan-500/30">VER 2.0 // TECH_ANALYSIS_BOOTCAMP</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+                實戰操盤<span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-500">特訓戰情室</span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mb-12 font-light">
+                「勝負不放在心上，只注重在正確的位置，做正確的事。」<br>
+                這裡不是教室，是戰場前的最後一道防線。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+                <div onclick="switchView('archive')" class="group cursor-pointer bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-sky-500 rounded-2xl p-8 transition-all duration-300 neon-border">
+                    <div class="h-12 w-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-sky-600 transition-colors">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 4.168 6.253v13C4.168 19.624 5.832 20 7.5 20s3.332-.376 3.332-1.747M12 6.253c1.168-.776 2.754-1.253 4.5-1.253s3.332.477 3.332 1.253v13C19.832 19.624 18.168 20 16.5 20s-3.332-.376-3.332-1.747"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">閱覽機密題庫</h3>
+                    <p class="text-slate-400">完整存取 30 道核心技術分析試題，包含基礎內功、進階招式與心法。</p>
+                </div>
+
+                <div onclick="startSimulation()" class="group cursor-pointer bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 hover:border-emerald-500 rounded-2xl p-8 transition-all duration-300 neon-border relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <svg class="w-24 h-24 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></svg>
+                    </div>
+                    <div class="h-12 w-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-emerald-600 transition-colors">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">啟動實戰模擬</h3>
+                    <p class="text-slate-400">系統將隨機抽取 10 題進行測驗。測試你的即時反應與判斷力。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Archive (30 Questions) -->
+        <div id="view-archive" class="hidden">
+            <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-white">機密檔案庫</h2>
+                    <p class="text-slate-400 font-mono mt-1">TOTAL_RECORDS: 30 // ACCESS_LEVEL: UNRESTRICTED</p>
+                </div>
+                <div class="flex space-x-2">
+                    <span class="px-3 py-1 rounded bg-blue-900/30 text-blue-400 text-xs border border-blue-800">基礎內功</span>
+                    <span class="px-3 py-1 rounded bg-purple-900/30 text-purple-400 text-xs border border-purple-800">進階招式</span>
+                    <span class="px-3 py-1 rounded bg-orange-900/30 text-orange-400 text-xs border border-orange-800">實戰心法</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6" id="archive-grid">
+                <!-- JS will populate cards here -->
+            </div>
+        </div>
+
+        <!-- View: Simulation (Quiz) -->
+        <div id="view-simulation" class="hidden max-w-2xl mx-auto">
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex justify-between text-xs font-mono text-slate-400 mb-2">
+                    <span id="quiz-progress-text">QUESTION 01/10</span>
+                    <span id="quiz-score-text">SCORE: 0</span>
+                </div>
+                <div class="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div id="quiz-progress-bar" class="h-full bg-sky-500 transition-all duration-500" style="width: 10%"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div id="quiz-card" class="bg-slate-800 rounded-2xl p-8 border border-slate-700 shadow-2xl relative min-h-[400px] flex flex-col">
+                <div class="absolute -top-3 -right-3">
+                    <span class="relative flex h-6 w-6">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-6 w-6 bg-sky-500"></span>
+                    </span>
+                </div>
+                
+                <div class="mb-6">
+                    <span id="quiz-category" class="inline-block px-2 py-1 bg-slate-900 rounded text-xs text-sky-400 font-mono mb-3">CATEGORY</span>
+                    <h3 id="quiz-question" class="text-2xl font-bold text-white leading-relaxed">
+                        題目載入中...
+                    </h3>
+                </div>
+
+                <div id="quiz-options" class="space-y-3 flex-grow">
+                    <!-- Options injected here -->
+                </div>
+
+                <!-- Feedback Area (Hidden initially) -->
+                <div id="quiz-feedback" class="hidden mt-6 p-4 bg-slate-900/50 rounded-lg border-l-4 border-sky-500 animate-fade-in">
+                    <p id="quiz-feedback-text" class="text-sm text-gray-300"></p>
+                    <button onclick="nextQuestion()" class="mt-4 w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded transition">下一題 &rarr;</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Results -->
+        <div id="view-results" class="hidden max-w-2xl mx-auto text-center animate-fade-in">
+            <div class="mb-8">
+                <div class="inline-block p-6 rounded-full bg-slate-800 border-4 border-slate-700 mb-6">
+                    <span id="final-score" class="text-6xl font-black text-white">80</span>
+                    <span class="text-xl text-slate-500">/100</span>
+                </div>
+                <h2 id="result-title" class="text-3xl font-bold text-white mb-2">任務完成</h2>
+                <p id="result-msg" class="text-slate-400">分析師等級評估中...</p>
+            </div>
+
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700 mb-8 text-left">
+                <h3 class="text-lg font-bold text-white mb-4 border-b border-slate-700 pb-2">錯題回顧</h3>
+                <ul id="wrong-answers-list" class="space-y-4 text-sm text-slate-300">
+                    <!-- Wrong answers injected here -->
+                </ul>
+            </div>
+
+            <div class="flex justify-center space-x-4">
+                <button onclick="startSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg">再次挑戰</button>
+                <button onclick="switchView('home')" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-bold transition">返回首頁</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6 mt-auto">
+        <div class="container mx-auto text-center text-slate-600 text-sm">
+            <p>&copy; 2025 實戰操盤特訓戰情室. Designed for Traders.</p>
+        </div>
+    </footer>
+
+    <!-- Data & Logic -->
+    <script>
+        // 30 Questions Data
+        const questionsDB = [
+            // Phase 1: Basic
+            { id: 1, category: "基礎內功", q: "多頭趨勢（牛市）最核心的定義「底底高、頭頭高」是指什麼？", options: ["股價站上所有均線", "低點比前低高，高點突破前高", "成交量持續放大", "KD黃金交叉"], ans: 1, expl: "正確。多頭趨勢的定義就是每一個回檔的低點比前一個低點高（底底高），且每一個上漲的高點突破前一個高點（頭頭高）。" },
+            { id: 2, category: "基礎內功", q: "空頭趨勢（熊市）的特徵「頭頭低、底底低」代表什麼意義？", options: ["反彈不過前高，下跌跌破前低", "股價跌破年線", "融資餘額過高", "主力持續買超"], ans: 0, expl: "反彈不過前高，下跌跌破前低，代表賣壓持續大於買盤，是空頭標準架構。" },
+            { id: 3, category: "基礎內功", q: "哪一條均線被稱為「生命線」，是判斷中期多空的重要分水嶺？", options: ["10日線(10MA)", "20日線(20MA)", "60日線(60MA)", "120日線(120MA)"], ans: 2, expl: "60日均線（季線）代表一季的平均成本，通常被稱為「生命線」。" },
+            { id: 4, category: "基礎內功", q: "月線 (20MA) 在實戰中通常扮演什麼角色？", options: ["極短線當沖依據", "波段操作輔助與短中期趨勢線", "長期投資成本線", "判斷除權息行情"], ans: 1, expl: "20MA是月線，常被視為短中期的輔助線或主力控盤線。" },
+            { id: 5, category: "基礎內功", q: "「量先價行」在低檔起漲時如何體現？", options: ["股價漲停但量縮", "股價未大漲，成交量先異常放大", "量價同時萎縮", "融券異常增加"], ans: 1, expl: "股價尚未大漲，但成交量先出現異常放大，暗示有資金進場佈局。" },
+            { id: 6, category: "基礎內功", q: "一根實體的「長紅K棒」代表當天多空交戰的結果為何？", options: ["多空平衡", "空方勝出", "多方完全勝出", "主力出貨"], ans: 2, expl: "開低走高收最高（或接近最高），代表多方力道強勁，完全勝出。" },
+            { id: 7, category: "基礎內功", q: "「十字線」(Doji) 出現在漲多高檔或跌深低檔，通常暗示什麼？", options: ["趨勢延續", "變盤訊號（轉折）", "成交量不足", "無意義"], ans: 1, expl: "十字線代表多空力道暫時平衡，原有力道受阻，常是變盤前兆。" },
+            { id: 8, category: "基礎內功", q: "「W底」型態要確認完成，必須突破哪個位置？", options: ["左腳低點", "右腳低點", "頸線（中間高點）", "季線"], ans: 2, expl: "W底必須帶量突破頸線，型態才算完成。" },
+            { id: 9, category: "基礎內功", q: "向上跳空缺口若三天內沒有被回補，代表什麼？", options: ["多方力道強勁，趨勢可能加速", "空方力道強勁", "準備回檔", "主力誘多"], ans: 0, expl: "缺口未補代表支撐強勁，是強勢多頭的特徵。" },
+            { id: 10, category: "基礎內功", q: "KD指標中，K值大於D值（黃金交叉）通常視為哪種訊號？", options: ["賣出訊號", "觀望訊號", "短線偏多（買進）訊號", "長線空頭訊號"], ans: 2, expl: "黃金交叉是短線轉強的訊號，適合尋找買點。" },
+
+            // Phase 2: Advanced
+            { id: 11, category: "進階招式", q: "「盤整突破」的最佳型態組合是什麼？", options: ["黑K+量縮", "長紅K+爆大量+突破切線", "十字線+量平", "長上影線+爆大量"], ans: 1, expl: "長紅K棒搭配爆大量並突破壓力線，是真突破的標準特徵。" },
+            { id: 12, category: "進階招式", q: "高檔「價漲量縮」是多頭力竭的徵兆，稱為什麼背離？", options: ["指標背離", "價量背離", "均線背離", "籌碼背離"], ans: 1, expl: "價格創新高但成交量沒跟上，稱為價量背離，暗示買盤竭盡。" },
+            { id: 13, category: "進階招式", q: "上漲途中的「量縮回檔」，只要不跌破哪裡，都視為多頭修正？", options: ["前波高點", "前波低點（支撐）", "5日均線", "開盤價"], ans: 1, expl: "只要低點不破前低，多頭架構（底底高）就沒被破壞。" },
+            { id: 14, category: "進階招式", q: "KD指標在高檔（>80）鈍化，不回檔反而持續噴出，該如何操作？", options: ["立即放空", "獲利了結", "續抱或找短線買點", "加碼攤平"], ans: 2, expl: "高檔鈍化是超強勢股特徵，通常代表主升段，不應輕易看空。" },
+            { id: 15, category: "進階招式", q: "出現「高檔爆量長黑」或「高檔爆量長上影線」通常暗示？", options: ["主力進貨", "換手成功", "主力調節或出貨", "底部確立"], ans: 2, expl: "高檔爆量收黑或留長上影線，代表賣壓湧現，主力可能正在倒貨。" },
+            { id: 16, category: "進階招式", q: "當股價在季線之上，且季線扣抵值在低檔，季線方向會如何？", options: ["下彎", "持平", "持續上揚助漲", "無方向"], ans: 2, expl: "新價高於扣抵價，均線會上揚，對股價有助漲效果。" },
+            { id: 17, category: "進階招式", q: "盤中突破壓力，收盤卻留長上影線跌回壓力之下，稱為？", options: ["真突破", "假突破（誘多）", "回後買上漲", "強勢整理"], ans: 1, expl: "這通常是主力誘多殺盤，假突破後常伴隨修正。" },
+            { id: 18, category: "進階招式", q: "MACD柱狀體由紅翻綠，代表什麼力道增強？", options: ["多方", "空方", "盤整", "主力"], ans: 1, expl: "MACD柱狀體翻綠代表空方動能增強，股價可能轉弱。" },
+            { id: 19, category: "進階招式", q: "什麼是「回後買上漲」策略？", options: ["回檔時直接接刀", "回檔破底後買進", "回檔守住支撐，轉折向上時買進", "突破新高追價"], ans: 2, expl: "確認支撐有效且多頭架構不變，看到轉折紅K再進場，勝率最高。" },
+            { id: 20, category: "進階招式", q: "為什麼選股要先看週線，再看日線？", options: ["長線保護短線", "短線決定長線", "週線比較準", "日線雜訊少"], ans: 0, expl: "確認大趨勢（週線）是多頭，日線的操作容錯率較高，稱為長線保護短線。" },
+
+            // Phase 3: Mindset
+            { id: 21, category: "實戰心法", q: "技術派最基本的停損點通常設在哪裡？", options: ["跌破買價10%", "跌破前波低點或關鍵支撐", "隨心情決定", "賠光為止"], ans: 1, expl: "跌破關鍵支撐代表進場理由消失，必須停損。" },
+            { id: 22, category: "實戰心法", q: "為什麼不能在第一筆交易就All-in滿倉？", options: ["手續費太貴", "保留容錯空間與加碼機會", "券商規定", "系統限制"], ans: 1, expl: "資金控管是生存關鍵，分批進場能降低風險。" },
+            { id: 23, category: "實戰心法", q: "當買進理由消失（例如跌破支撐），你的下一步必須是什麼？", options: ["加碼攤平", "祈禱反彈", "紀律執行停損", "刪除APP"], ans: 2, expl: "紀律是交易的靈魂，理由消失就該離場。" },
+            { id: 24, category: "實戰心法", q: "為什麼要「買強不買弱」？", options: ["強勢股上方無套牢賣壓，漲得快", "弱勢股比較便宜", "強勢股風險小", "弱勢股補漲空間大"], ans: 0, expl: "強勢股代表資金集中，趨勢明確，效率最高。" },
+            { id: 25, category: "實戰心法", q: "盤整盤（無趨勢）時，最好的操作策略是什麼？", options: ["區間來回操作", "追高殺低", "空手觀望，多看少做", "融資買進"], ans: 2, expl: "盤整期容易被雙巴，保留資金等待趨勢出現是上策。" },
+            { id: 26, category: "實戰心法", q: "看到股價急拉噴出才想追，通常犯了什麼心理謬誤？", options: ["錨定效應", "FOMO (錯失恐懼症)", "處置效應", "過度自信"], ans: 1, expl: "害怕賺不到錢而盲目追高，往往買在短線高點。" },
+            { id: 27, category: "實戰心法", q: "「利多見報」且股價在高檔不漲反跌，意味著什麼？", options: ["利多出盡，主力出貨", "洗盤", "進貨良機", "政府護盤"], ans: 0, expl: "消息面通常是落後的，高檔利多不漲往往是主力利用消息出貨。" },
+            { id: 28, category: "實戰心法", q: "賠錢的交易最重要的價值是什麼？", options: ["折抵稅金", "找出錯誤原因，修正系統", "訓練心臟", "增加經驗值"], ans: 1, expl: "檢討失敗是進步最快的方式，避免重複犯錯。" },
+            { id: 29, category: "實戰心法", q: "為什麼不要去猜測股價的頭部或底部（摸頭猜底）？", options: ["因為猜不到", "逆勢操作風險大，應等訊號確認", "主力會生氣", "軟體不支援"], ans: 1, expl: "頭部底部是市場走出來的，順勢交易者應等待趨勢反轉確認。" },
+            { id: 30, category: "實戰心法", q: "技術分析的終極目的不是預測未來，而是什麼？", options: ["解釋過去", "炫耀技術", "擬定對策", "預測股價"], ans: 2, expl: "針對各種可能走勢（漲/跌/盤）事先擬定對應的操作劇本，才是技術分析的核心。" }
+        ];
+
+        // State
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let wrongAnswers = [];
+
+        // DOM Elements
+        const views = {
+            home: document.getElementById('view-home'),
+            archive: document.getElementById('view-archive'),
+            simulation: document.getElementById('view-simulation'),
+            results: document.getElementById('view-results')
+        };
+        const archiveGrid = document.getElementById('archive-grid');
+        const quizCard = {
+            category: document.getElementById('quiz-category'),
+            question: document.getElementById('quiz-question'),
+            options: document.getElementById('quiz-options'),
+            feedback: document.getElementById('quiz-feedback'),
+            feedbackText: document.getElementById('quiz-feedback-text'),
+            progressText: document.getElementById('quiz-progress-text'),
+            scoreText: document.getElementById('quiz-score-text'),
+            progressBar: document.getElementById('quiz-progress-bar')
+        };
+
+        // Initialize Archive
+        function initArchive() {
+            archiveGrid.innerHTML = '';
+            questionsDB.forEach(q => {
+                const card = document.createElement('div');
+                card.className = "bg-slate-800/50 p-6 rounded-xl border border-slate-700 hover:border-sky-500 transition-all hover:bg-slate-800 neon-border card-hover";
+                
+                let tagColor = "text-sky-400 border-sky-800 bg-sky-900/30";
+                if(q.category === "進階招式") tagColor = "text-purple-400 border-purple-800 bg-purple-900/30";
+                if(q.category === "實戰心法") tagColor = "text-orange-400 border-orange-800 bg-orange-900/30";
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-xs font-mono px-2 py-1 rounded border ${tagColor}">${q.category}</span>
+                        <span class="text-slate-500 font-mono text-xs">NO.${String(q.id).padStart(2, '0')}</span>
+                    </div>
+                    <h3 class="font-bold text-white text-lg mb-4 min-h-[3.5rem]">${q.q}</h3>
+                    <div class="relative group">
+                        <div class="bg-slate-900 p-4 rounded text-sm text-slate-300 border border-slate-700">
+                            <span class="text-emerald-400 font-bold block mb-1">正確解答：${q.options[q.ans]}</span>
+                            <p class="text-slate-400 text-xs mt-2 border-t border-slate-700 pt-2">${q.expl}</p>
+                        </div>
+                    </div>
+                `;
+                archiveGrid.appendChild(card);
+            });
+        }
+
+        // Navigation
+        function switchView(viewName) {
+            Object.values(views).forEach(el => el.classList.add('hidden'));
+            views[viewName].classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        // Quiz Logic
+        function startSimulation() {
+            // Randomly select 10 questions
+            const shuffled = [...questionsDB].sort(() => 0.5 - Math.random());
+            currentQuiz = shuffled.slice(0, 10);
+            currentQuestionIndex = 0;
+            score = 0;
+            wrongAnswers = [];
+            
+            loadQuestion();
+            switchView('simulation');
+        }
+
+        function loadQuestion() {
+            const q = currentQuiz[currentQuestionIndex];
+            
+            // Update UI
+            quizCard.category.textContent = q.category;
+            quizCard.question.textContent = q.q;
+            quizCard.feedback.classList.add('hidden');
+            quizCard.progressText.textContent = `QUESTION ${String(currentQuestionIndex + 1).padStart(2, '0')}/10`;
+            quizCard.scoreText.textContent = `SCORE: ${score}`;
+            quizCard.progressBar.style.width = `${((currentQuestionIndex) / 10) * 100}%`;
+
+            // Color code category
+            if(q.category === "進階招式") quizCard.category.className = "inline-block px-2 py-1 bg-slate-900 rounded text-xs text-purple-400 font-mono mb-3 border border-purple-900";
+            else if(q.category === "實戰心法") quizCard.category.className = "inline-block px-2 py-1 bg-slate-900 rounded text-xs text-orange-400 font-mono mb-3 border border-orange-900";
+            else quizCard.category.className = "inline-block px-2 py-1 bg-slate-900 rounded text-xs text-sky-400 font-mono mb-3 border border-sky-900";
+
+
+            // Render Options
+            quizCard.options.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 rounded-lg bg-slate-700/50 hover:bg-slate-700 border border-slate-600 hover:border-sky-400 transition-all text-slate-200 flex items-center group";
+                btn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-500 group-hover:border-sky-400 mr-3 flex items-center justify-center text-xs font-mono text-slate-500 group-hover:text-sky-400">${String.fromCharCode(65+idx)}</span>
+                    ${opt}
+                `;
+                btn.onclick = () => checkAnswer(idx, btn);
+                quizCard.options.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedIdx, btnElement) {
+            // Disable all buttons
+            const buttons = quizCard.options.querySelectorAll('button');
+            buttons.forEach(b => b.disabled = true);
+
+            const q = currentQuiz[currentQuestionIndex];
+            const isCorrect = selectedIdx === q.ans;
+
+            if (isCorrect) {
+                score += 10;
+                btnElement.classList.remove('bg-slate-700/50', 'border-slate-600');
+                btnElement.classList.add('bg-emerald-900/50', 'border-emerald-500');
+                btnElement.querySelector('span').classList.add('bg-emerald-500', 'text-white', 'border-emerald-500');
+            } else {
+                wrongAnswers.push({
+                    q: q.q,
+                    myAns: q.options[selectedIdx],
+                    correctAns: q.options[q.ans],
+                    expl: q.expl
+                });
+                btnElement.classList.remove('bg-slate-700/50', 'border-slate-600');
+                btnElement.classList.add('bg-red-900/50', 'border-red-500');
+                
+                // Highlight correct answer
+                buttons[q.ans].classList.add('bg-emerald-900/50', 'border-emerald-500');
+            }
+
+            // Show Feedback
+            quizCard.feedbackText.innerHTML = `<span class="font-bold ${isCorrect ? 'text-emerald-400' : 'text-red-400'}">${isCorrect ? '正解！' : '可惜了！'}</span> ${q.expl}`;
+            quizCard.feedback.classList.remove('hidden');
+            
+            // Update score display
+            quizCard.scoreText.textContent = `SCORE: ${score}`;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < 10) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            switchView('results');
+            const scoreEl = document.getElementById('final-score');
+            const titleEl = document.getElementById('result-title');
+            const msgEl = document.getElementById('result-msg');
+            const listEl = document.getElementById('wrong-answers-list');
+
+            // Animation for score
+            let currentScore = 0;
+            const timer = setInterval(() => {
+                currentScore += 1;
+                scoreEl.textContent = currentScore;
+                if(currentScore >= score) clearInterval(timer);
+            }, 20);
+
+            // Rank logic
+            if(score === 100) {
+                titleEl.textContent = "傳說級操盤手";
+                titleEl.className = "text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500";
+                msgEl.textContent = "完美的判斷力！市場就是你的提款機。";
+            } else if(score >= 80) {
+                titleEl.textContent = "專業級交易員";
+                titleEl.className = "text-3xl font-bold text-emerald-400";
+                msgEl.textContent = "表現優異，已具備穩定獲利的能力。";
+            } else if(score >= 60) {
+                titleEl.textContent = "合格散戶";
+                titleEl.className = "text-3xl font-bold text-sky-400";
+                msgEl.textContent = "勉強及格，但實戰中可能還會受傷，請多加強心法。";
+            } else {
+                titleEl.textContent = "新手村學員";
+                titleEl.className = "text-3xl font-bold text-slate-400";
+                msgEl.textContent = "建議重新研讀機密題庫，現在進場會變成韭菜。";
+            }
+
+            // Wrong Answers List
+            listEl.innerHTML = '';
+            if(wrongAnswers.length === 0) {
+                listEl.innerHTML = '<li class="text-emerald-400 text-center py-4">無錯題記錄，完美通關！</li>';
+            } else {
+                wrongAnswers.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = "bg-slate-900 p-4 rounded border border-slate-700";
+                    li.innerHTML = `
+                        <p class="font-bold text-white mb-1">${item.q}</p>
+                        <div class="flex flex-col sm:flex-row gap-2 text-xs">
+                            <span class="text-red-400">❌ 你的選擇: ${item.myAns}</span>
+                            <span class="text-emerald-400">⭕️ 正確解答: ${item.correctAns}</span>
+                        </div>
+                        <p class="text-slate-500 text-xs mt-2 italic">${item.expl}</p>
+                    `;
+                    listEl.appendChild(li);
+                });
+            }
+        }
+
+        // Init
+        initArchive();
+
+    </script>
+</body>
+</html>
